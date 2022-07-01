@@ -2,9 +2,13 @@ ARG IMAGE=ghcr.io/boriswilhelms/azure-cli-armv7:latest
 FROM $IMAGE
 
 RUN apk add --no-cache bind-tools && \
-    mkdir /app
+    addgroup --system app && \
+    adduser --system --disabled-password --home /app app && \
+    chown -R app:app /app
+
+USER app
 
 WORKDIR /app
 COPY script/ .
 
-ENTRYPOINT [ "/app/updater.sh" ]`
+CMD [ "/app/updater.sh" ]`
