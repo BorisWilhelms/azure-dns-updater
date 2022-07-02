@@ -21,6 +21,10 @@ info() {
     log "INFO" "$1"
 }
 
+if [ -f /run/secrets/azure_credentials ]; then
+    . /run/secrets/azure_credentials
+fi
+
 if [ -z "$AZURE_CLIENT_ID" ] || [ -z "$AZURE_CLIENT_SECRET" ] || [ -z "$AZURE_TENANT_ID" ]; then
     error "AZURE_CLIENT_ID, AZURE_CLIENT_SECRET and AZURE_TENANT_ID must be set"
     exit 1
