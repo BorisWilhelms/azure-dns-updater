@@ -31,7 +31,3 @@ Just run the script.
 The script will run until terminated and will check for ip address changes based on the interval.
 
 The script uses the `dig` command to query the current ip address from opendns.
-
-## docker
-
-The dockerfile is intended to run on ARM based devices (32 bit) e.g. Raspberry Pis
